@@ -16,7 +16,6 @@ module.exports = {
       ]
     ]
   },
-
   prompt: {
     useEmoji: true,
     emojiAlign: 'center',
