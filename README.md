@@ -44,3 +44,6 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## Add Husky
 Update with run husky
+
+## Add commrtizen
+Create new git commit with npm run commit
