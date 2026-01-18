@@ -1,0 +1,23 @@
+---
+import { site } from "../data/site";
+const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
+  "Hola, me gustaría pedir presupuesto y disponibilidad."
+)}`;
+---
+
+<section
+  style="
+    background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url('/posters/posterHero.jpg') center/cover no-repeat;
+    color: white;
+  "
+>
+  <div class="container">
+    <img src="/brand/logo.jpg" alt="El Chaparrito" style="height:80px" />
+    <h1>Servicios agrícolas profesionales</h1>
+    <p>
+    Más de 25 años dedicados a la agricultura, trabajando comunitariamete la tierra y realizando trabajos a terceros.
+    </p>
+    <a class="btn btn-primary" href={waLink}>Solicitar información</a>
+  </div>
+</section>

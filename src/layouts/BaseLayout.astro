@@ -1,0 +1,19 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+const { title = site.name, description = site.tagline } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

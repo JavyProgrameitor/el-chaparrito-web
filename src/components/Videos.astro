@@ -1,0 +1,33 @@
+---
+const vids = [
+  { label: "Cosecha de cereal", src: "/videos/cosecha-cereal.mp4", poster: "/posters/poster-cereal.jpg" },
+  { label: "Cosecha de tomate", src: "/videos/cosecha-tomate.mp4", poster: "/posters/poster-tomate.jpg" },
+  { label: "Siembra",          src: "/videos/siembra.mp4",        poster: "/posters/poster-siembra.jpg" },
+  { label: "Cosecha de maíz",  src: "/videos/cosecha-maiz.mp4",   poster: "/posters/poster-maiz.jpg" },
+];
+---
+
+
+<section style="padding: 10px 16px 24px; max-width: 1000px; margin: 0 auto;">
+  <h2>Vídeos de trabajos</h2>
+  <div
+    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px;"
+  >
+    {
+      vids.map((v) => (
+        <figure style="margin:0; border:1px solid #ddd; border-radius:14px; padding:10px;">
+          <figcaption style="margin:0 0 8px; font-weight:600;">
+            {v.label}
+          </figcaption>
+          <video
+            src={v.src}
+            controls
+            preload="metadata"
+            poster={v.poster}
+            style="width:100%; border-radius:12px;"
+          />
+        </figure>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import { services } from "../data/services";
+---
+
+<section style="background: var(--gray)">
+  <div class="container">
+    <h2>Servicios agrícolas</h2>
+
+    <div style="display:grid; gap:24px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));">
+      {services.map(s => (
+        <article
+          style="
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            box-shadow:0 10px 30px rgba(0,0,0,.08);
+          "
+        >
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+

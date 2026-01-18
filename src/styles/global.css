@@ -1,0 +1,53 @@
+:root {
+  --green: #1f7a4a;
+  --green-dark: #145c37;
+  --gray: #f5f7f6;
+  --text: #1f2933;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Ubuntu, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  background: #83dc2f;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+section {
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--green-dark);
+}
