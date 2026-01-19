@@ -1,13 +1,8 @@
 ---
 import { site } from "../data/site";
 
-const phonePretty = (p: string) => {
-  const s = String(p).replace(/\s+/g, "");
-  return s.replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3");
-};
-
 const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
-  "Hola, me gustaría pedir presupuesto y disponibilidad.",
+  "Hola Waldo,  me gustaría pedir presupuesto y disponibilidad.",
 )}`;
 ---
 
@@ -16,24 +11,19 @@ const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
 >
   <div class="mx-auto max-w-5xl px-4 py-3">
     <div class="flex flex-col items-center text-center">
-      <!--    <a href="/" class="inline-flex flex-col items-center gap-2"> -->
-      <img src="/brand/Ch.avif" alt="El Chaparrito" class="h-32 w-auto" />
-      <!--  <div class="text-sm font-semibold tracking-wide text-slate-800">
-          <div>📞 +34 {phonePretty(site.phone1)}</div>
-          <div class="text-xs font-medium text-slate-600">+34 {phonePretty(site.phone2)}</div>
-            -->
+      <img src="/brand/logo1.avif" alt="El Chaparrito" class="h-28 w-auto" />
     </div>
 
-    <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+    <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
       <a
         href={waLink}
-        class="inline-block rounded-xl bg-jd-green px-6 py-3 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
+        class="inline-block rounded-xl bg-jd-green px-5 py-1 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
       >
         WhatsApp
       </a>
       <a
         href={`tel:+34${site.phone1}`}
-        class="inline-block rounded-xl bg-jd-green px-6 py-3 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
+        class="inline-block rounded-xl bg-jd-green px-5 py-1 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
       >
         Llamar
       </a>
