@@ -1,23 +1,41 @@
 ---
 import { site } from "../data/site";
+
 const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
   "Hola, me gustaría pedir presupuesto y disponibilidad."
 )}`;
 ---
 
-<section
-  style="
-    background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url('/posters/posterHero.jpg') center/cover no-repeat;
-    color: white;
-  "
->
-  <div class="container">
-    <img src="/brand/Ch.avif" alt="El Chaparrito" style="height:80px" />
-    <h1>Servicios agrícolas profesionales</h1>
-    <p>
-    Más de 25 años dedicados a la agricultura, trabajando comunitariamete la tierra y realizando trabajos a terceros.
-    </p>
-    <a class="btn btn-primary" href={waLink}>Solicitar información</a>
+<section class="relative overflow-hidden bg-slate-950">
+  <!-- fondo sutil -->
+  <div class="absolute inset-0 opacity-40" aria-hidden="true">
+    <div class="absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-brand-600 blur-3xl"></div>
+    <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-emerald-400 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-4 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl text-center text-white">
+      <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-white/90">
+        📍 {site.location}
+      </p>
+
+      <h1 class="mt-6 animate-fade-up text-3xl font-bold tracking-tight sm:text-5xl">
+        Servicios agrícolas para terceros
+      </h1>
+
+      <p class="mt-6 animate-fade-up text-base text-white/85 sm:text-lg">
+        Más de 25 años dedicados a la agricultura, trabajando comunitariamente la tierra y realizando trabajos a terceros.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href={waLink}
+        class="inline-block rounded-xl bg-jd-green px-6 py-3 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
+        >
+          Pedir disponibilidad
+        </a>
+
+      </div>
+    </div>
   </div>
 </section>

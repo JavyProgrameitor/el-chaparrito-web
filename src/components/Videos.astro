@@ -1,108 +1,132 @@
 ---
 const vids = [
-  {
-    label: "Cosecha de cereal",
-    youtubeId: "https://youtube.com/shorts/n8XVYyIbnDQ",
-    poster: "/posters/poster-cereal.jpg",
-  },
-  {
-    label: "Cosecha de tomate",
-    youtubeId: "https://youtube.com/shorts/KeMcqzyPPS0",
-    poster: "/posters/poster-tomate.jpg",
-  },
-  {
-    label: "Siembra",
-    youtubeId: "https://youtube.com/shorts/X1Iwf6DS-LE",
-    poster: "/posters/poster-siembra.jpg",
-  },
-  {
-    label: "Cosecha de maíz",
-    youtubeId: "https://youtu.be/Je6a-oadxa8",
-    poster: "/posters/poster-maiz.jpg",
-  },
+  { label: "Cosecha de cereal", youtubeId: "n8XVYyIbnDQ", poster: "/posters/poster-cereal.jpg" },
+  { label: "Cosecha de tomate", youtubeId: "KeMcqzyPPS0", poster: "/posters/poster-tomate.jpg" },
+  { label: "Siembra",          youtubeId: "X1Iwf6DS-LE", poster: "/posters/poster-siembra.jpg" },
+  { label: "Cosecha de maíz",  youtubeId: "Je6a-oadxa8", poster: "/posters/poster-maiz.jpg" },
 ];
 ---
 
-<section style="padding: 10px 16px 24px; max-width: 1000px; margin: 0 auto;">
-  <h2>Vídeos de trabajos</h2>
-  <div
-    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px;"
-  >
-    {
-      vids.map((v) => (
-        <div style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden;">
-          <div
-            class="yt"
-            data-id={v.youtubeId}
-            style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#000;"
-          >
+<section class="py-10 px-4">
+  <div class="mx-auto max-w-5xl">
+    <h2 class="text-2xl font-semibold tracking-tight">Vídeos de trabajos</h2>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {vids.map((v) => (
+        <figure class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md">
+          <figcaption class="px-4 pt-4 pb-3 font-semibold">{v.label}</figcaption>
+
+          <div class="relative aspect-video bg-black">
             <button
               type="button"
-              class="yt-btn"
+              class="yt-open group absolute inset-0 block h-full w-full"
+              data-id={v.youtubeId}
               aria-label={"Reproducir " + v.label}
-              style="all:unset; cursor:pointer; position:absolute; inset:0; display:block;"
             >
               <img
                 src={v.poster}
                 alt={v.label}
                 loading="lazy"
-                style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"
+                class="absolute inset-0 h-full w-full object-cover"
               />
-              <span
-                style="
-        position:absolute; inset:0;
-        display:grid; place-items:center;
-        background: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25));
-      "
-              >
-                <span
-                  style="
-          width:76px; height:76px; border-radius:999px;
-          background: rgba(255,255,255,.92);
-          display:grid; place-items:center;
-        "
-                >
-                  <span
-                    style="
-          display:block; width:0; height:0;
-          border-left:18px solid #000;
-          border-top:12px solid transparent;
-          border-bottom:12px solid transparent;
-          margin-left:4px;
-        "
-                  />
-                </span>
-              </span>
+
+              <div class="absolute inset-0 bg-black/20 transition group-hover:bg-black/30"></div>
+
+              <div class="absolute inset-0 grid place-items-center">
+                <div class="grid h-16 w-16 place-items-center rounded-full bg-white/90 shadow-md transition group-hover:scale-105">
+                  <div class="ml-1 h-0 w-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-black"></div>
+                </div>
+              </div>
             </button>
           </div>
-        </div>
-      ))
-    }
+        </figure>
+      ))}
+    </div>
   </div>
 </section>
+
+<!-- MODAL (una sola vez) -->
+<div
+  id="video-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+  aria-hidden="true"
+>
+  <div class="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-xl">
+    <!-- Máscara superior (tapa avatar/título) -->
+    <div class="pointer-events-none absolute left-0 top-0 z-10 h-20 w-full bg-black"></div>
+
+    <!-- Botón cerrar -->
+    <button
+      id="video-close"
+      type="button"
+      class="absolute right-3 top-3 z-20 rounded-full bg-white/90 px-3 py-2 text-sm font-semibold text-black hover:bg-white"
+    >
+      Cerrar ✕
+    </button>
+
+    <!-- Aquí inyectamos el iframe -->
+    <div class="relative aspect-video w-full bg-black" id="video-player"></div>
+  </div>
+</div>
+
 <script>
-  document.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
+  function openModal(videoId: string) {
+    const modal = document.getElementById("video-modal");
+    const player = document.getElementById("video-player");
+    if (!modal || !player) return;
 
-    const btn = target.closest(".yt-btn");
-    if (!btn) return;
+    // Mostrar modal
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    modal.setAttribute("aria-hidden", "false");
 
-    const wrap = btn.closest(".yt");
-    if (!wrap) return;
-
-    const id = wrap.getAttribute("data-id");
-    if (!id) return;
-
-    wrap.innerHTML = `
+    // Inyectar iframe ocupando todo (sin bandas)
+    player.innerHTML = `
       <iframe
-        src="https://www.youtube.com/embed/${id}?autoplay=1"
+        src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
         title="YouTube video player"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
         style="position:absolute; inset:0; width:100%; height:100%; border:0;"
       ></iframe>
     `;
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("video-modal");
+    const player = document.getElementById("video-player");
+    if (!modal || !player) return;
+
+    // Quitar iframe para parar el vídeo
+    player.innerHTML = "";
+
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const openBtn = target.closest(".yt-open");
+    if (openBtn) {
+      const id = openBtn.getAttribute("data-id");
+      if (id) openModal(id);
+      return;
+    }
+
+    if (target.id === "video-close") {
+      closeModal();
+      return;
+    }
+
+    if (target.id === "video-modal") {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
   });
 </script>
