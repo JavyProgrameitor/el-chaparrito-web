@@ -2,20 +2,20 @@
 import { services } from "../data/services";
 ---
 
-<section class="bg-slate-50">
+<section class="bg-jd-yellowSoft">
   <div class="mx-auto max-w-5xl px-4 py-14 sm:py-16">
     <div class="mx-auto max-w-3xl text-center">
-      <h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Servicios</h2>
-      <p class="mt-4 text-slate-600">
+      <h2 class="text-3xl font-black tracking-tight text-jd-green sm:text-4xl">Servicios</h2>
+      <p class="mt-4 text-jd-greenDark font-bold">
         Siembra de precisión, cosecha y mapas de rendimiento para mejorar la toma de decisiones.
       </p>
     </div>
 
     <div class="mt-10 grid gap-4 sm:gap-6 md:grid-cols-2">
       {services.map((s) => (
-        <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:-translate-y-0.5 hover:shadow-md">
-          <h3 class="text-base font-semibold text-slate-900">{s.title}</h3>
-          <p class="mt-2 text-sm text-slate-600">{s.desc}</p>
+        <article class="text-center group rounded-2xl border border-slate-200 bg-jd-yellow p-6 shadow-xl hover:-translate-y-0.5 hover:shadow-2xl">
+          <h3 class="text-base font-semibold text-jd-greenDark">{s.title}</h3>
+          <p class="mt-2 text-sm text-jd-green">{s.desc}</p>
           <div class="mt-4 h-1 w-10 rounded-full bg-brand-600/70 group-hover:w-14"></div>
         </article>
       ))}

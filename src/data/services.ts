@@ -12,7 +12,7 @@ export const services = [
     desc: "Generación de mapas de rendimiento en cosecha para decisiones más precisas.",
   },
   {
-    title: "Mapas de rendimiento en cosecha de tintes",
+    title: "Cosecha de tintes",
     desc: "Obtención de mapas y datos para análisis y mejora de resultados.",
   },
   {
