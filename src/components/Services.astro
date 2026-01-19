@@ -14,8 +14,8 @@ import { services } from "../data/services";
     <div class="mt-10 grid gap-4 sm:gap-6 md:grid-cols-2">
       {services.map((s) => (
         <article class="text-center group rounded-2xl border border-slate-200 bg-jd-yellow p-6 shadow-xl hover:-translate-y-0.5 hover:shadow-2xl">
-          <h3 class="text-base font-semibold text-jd-greenDark">{s.title}</h3>
-          <p class="mt-2 text-sm text-jd-green">{s.desc}</p>
+          <h3 class="text-xl font-black text-jd-greenDark">{s.title}</h3>
+          <p class="mt-2 text-lg text-jd-green">{s.desc}</p>
           <div class="mt-4 h-1 w-10 rounded-full bg-brand-600/70 group-hover:w-14"></div>
         </article>
       ))}
