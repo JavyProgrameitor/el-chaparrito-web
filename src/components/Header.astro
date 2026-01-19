@@ -2,31 +2,38 @@
 import { site } from "../data/site";
 
 const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
-  "Hola Waldo,  me gustaría pedir presupuesto y disponibilidad.",
+  "Hola Waldo, me gustaría pedir presupuesto y disponibilidad.",
 )}`;
 ---
 
-<header
-  class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur"
->
-  <div class="mx-auto max-w-5xl px-4 py-3">
-    <div class="flex flex-col items-center text-center">
-      <img src="/brand/logo.avif" alt="El Chaparrito" class="h-32 w-auto" />
-    </div>
+<header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
+  <div class="mx-auto max-w-5xl px-4 py-2 sm:py-3">
+    <div class="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between sm:text-left">
+      <!-- Logo -->
+      <a href="/" class="flex items-center justify-center">
+        <img
+          src="/brand/logo.avif"
+          alt="El Chaparrito"
+          class="h-24 w-auto sm:h-16 md:h-20"
+        />
+      </a>
 
-    <div class="mt-1 flex flex-wrap items-center justify-center gap-2">
-      <a
-        href={waLink}
-        class="inline-block rounded-xl bg-jd-green px-5 py-1 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
-      >
-        WhatsApp
-      </a>
-      <a
-        href={`tel:+34${site.phone1}`}
-        class="inline-block rounded-xl bg-jd-green px-5 py-1 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
-      >
-        Llamar
-      </a>
+      <!-- Botones -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+        <a
+          href={waLink}
+          class="inline-flex items-center rounded-xl bg-jd-green px-4 py-2 text-sm font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href={`tel:+34${site.phone1}`}
+          class="inline-flex items-center rounded-xl bg-jd-green px-4 py-2 text-sm font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
+        >
+          Llamar
+        </a>
+      </div>
     </div>
   </div>
 </header>

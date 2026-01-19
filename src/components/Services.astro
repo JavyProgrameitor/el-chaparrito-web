@@ -5,7 +5,9 @@ import { services } from "../data/services";
 <section class="bg-jd-yellowSoft">
   <div class="mx-auto max-w-5xl px-4 py-14 sm:py-16">
     <div class="mx-auto max-w-3xl text-center">
-      <h2 class="text-3xl font-black tracking-tight text-jd-green sm:text-4xl">Servicios</h2>
+      <h2 class="text-3xl font-black tracking-tight text-jd-green sm:text-4xl">
+        Servicios
+      </h2>
       <p class="mt-4 text-jd-greenDark font-bold">
         Siembra de precisión, cosecha y mapas de rendimiento para mejorar la toma de decisiones.
       </p>
@@ -13,12 +15,90 @@ import { services } from "../data/services";
 
     <div class="mt-10 grid gap-4 sm:gap-6 md:grid-cols-2">
       {services.map((s) => (
-        <article class="text-center group rounded-2xl border border-slate-200 bg-jd-yellow p-6 shadow-xl hover:-translate-y-0.5 hover:shadow-2xl">
+        <article
+          class="group cursor-pointer rounded-2xl border border-slate-200 bg-jd-yellow p-6 text-center shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl"
+          data-image={s.image}
+        >
           <h3 class="text-xl font-black text-jd-greenDark">{s.title}</h3>
           <p class="mt-2 text-lg text-jd-green">{s.desc}</p>
-          <div class="mt-4 h-1 w-10 rounded-full bg-brand-600/70 group-hover:w-14"></div>
+          <div class="mx-auto mt-4 h-1 w-10 rounded-full bg-jd-green/70 transition-all group-hover:w-14"></div>
         </article>
       ))}
     </div>
   </div>
 </section>
+
+<!-- MODAL DE IMAGEN -->
+<div
+  id="service-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+  aria-hidden="true"
+>
+  <div class="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl">
+    <!-- Botón cerrar -->
+    <button
+      id="service-close"
+      type="button"
+      class="absolute right-3 top-3 z-20 rounded-full bg-white/90 px-3 py-2 text-sm font-semibold text-black hover:bg-white"
+    >
+      Cerrar ✕
+    </button>
+
+    <!-- Imagen -->
+    <img
+      id="service-image"
+      src=""
+      alt=""
+      class="h-full w-full object-contain"
+    />
+  </div>
+</div>
+
+<script>
+  function openServiceModal(imageSrc: string) {
+    const modal = document.getElementById("service-modal");
+    const img = document.getElementById("service-image") as HTMLImageElement;
+    if (!modal || !img) return;
+
+    img.src = imageSrc;
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeServiceModal() {
+    const modal = document.getElementById("service-modal");
+    const img = document.getElementById("service-image") as HTMLImageElement;
+    if (!modal || !img) return;
+
+    img.src = "";
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const card = target.closest("article[data-image]");
+    if (card) {
+      const img = card.getAttribute("data-image");
+      if (img) openServiceModal(img);
+      return;
+    }
+
+    if (target.id === "service-close" || target.id === "service-modal") {
+      closeServiceModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeServiceModal();
+  });
+</script>
