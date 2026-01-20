@@ -13,27 +13,23 @@ const waLink = `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(
     <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-emerald-400 blur-3xl"></div>
   </div>
 
-  <div class="relative mx-auto max-w-5xl px-4 py-16 sm:py-20">
-    <div class="mx-auto max-w-3xl text-center text-white">
-      <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-white/90">
-        📍 {site.location}
-      </p>
+  <div class="relative mx-auto max-w-5xl px-4 py-16 sm:py-20 font-bold">
+    <div class="mx-auto max-w-3xl text-center text-jd-yellowSoft">
+      
+      <h1 class="mt-6 animate-fade-up text-4xl font-display tracking-tight sm:text-6xl">"EL CHAPARRITO"</h1>
 
-      <h1 class="mt-6 animate-fade-up text-3xl font-bold tracking-tight sm:text-5xl">
+      <h2 class="mt-6 animate-fade-up text-2xl tracking-tight sm:text-4xl">
         Servicios para la Agricultura
-      </h1>
+      </h2>
 
-      <p class="mt-6 animate-fade-up text-base text-white/85 sm:text-lg">
+      <p class="mt-6 animate-fade-up text-base text-jd-yellow sm:text-lg">
         Más de 25 años dedicados a la agricultura, trabajando comunitariamente la tierra y realizando trabajos a terceros.
       </p>
 
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a
-          href={waLink}
-        class="inline-block rounded-xl bg-jd-green px-6 py-3 font-semibold text-jd-yellow shadow-md transition hover:bg-jd-greenDark"
-        >
-          Pedir disponibilidad
-        </a>
+          <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-jd-yellowSoft">
+        📍 {site.location}
+      </p>
 
       </div>
     </div>
