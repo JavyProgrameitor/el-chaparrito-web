@@ -31,10 +31,10 @@ import { services } from "../data/services";
 <!-- MODAL DE IMAGEN -->
 <div
   id="service-modal"
-  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-2 sm:p-4"
   aria-hidden="true"
 >
-  <div class="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl">
+  <div class="relative h-[92dvh] w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl">
     <!-- Botón cerrar -->
     <button
       id="service-close"
@@ -102,3 +102,4 @@ import { services } from "../data/services";
     if (e.key === "Escape") closeServiceModal();
   });
 </script>
+
