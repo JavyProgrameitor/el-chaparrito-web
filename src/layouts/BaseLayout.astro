@@ -5,7 +5,7 @@ import "../styles/global.css";
 const { title = site.name, description = site.tagline } = Astro.props;
 
 // Cambia esto cuando tengas dominio propio
-const SITE_URL = "https://el-chaparrito-web.vercel.app";
+const SITE_URL = "https://www.elchaparrito.es";
 
 // Imagen OG (JPG/PNG recomendado para WhatsApp/Twitter)
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -46,13 +46,37 @@ const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
     <!-- Fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rye&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Favicons (mejor PNG/ICO para compatibilidad) -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="canonical" href={SITE_URL + Astro.url.pathname} />
+    <meta property="og:url" content={SITE_URL + Astro.url.pathname} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "SOC. COOP. EL CHAPARRITO",
+        description: "Servicios agrícolas a terceros",
+        url: "https://www.elchaparrito.es",
+        telephone: ["+34 636483088", "+34 659094474"],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Pueblonuevo del Guadiana",
+          addressRegion: "Badajoz",
+          addressCountry: "ES",
+        },
+      })}
+    />
   </head>
 
   <body class="bg-jd-yellowSoft text-jd-greenDark font-sans">

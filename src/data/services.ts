@@ -12,16 +12,16 @@ export const services = [
   {
     title: "Mapas de rendimiento",
     desc: "Generación de mapas de rendimiento en cosecha para decisiones más precisas.",
-    image: "/imagenes/Img3.jpeg",
+    image: "/imagenes/Img11.jpg",
   },
   {
-    title: "Cosecha de tintes",
+    title: "En cosecha de tomates",
     desc: "Obtención de mapas y datos para análisis y mejora de resultados.",
-    image: "/imagenes/Img4.jpeg",
+    image: "/imagenes/Img10.jpg",
   },
   {
     title: "Recolección del tomate",
     desc: "Recogida mecanizada de tomate para industria con equipos especializados.",
-    image: "/imagenes/Img1.jpeg",
+    image: "/imagenes/Img9.jpg",
   },
 ];
